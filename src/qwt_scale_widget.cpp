@@ -208,7 +208,7 @@ void QwtScaleWidget::setTitle( const QwtText& title )
  */
 void QwtScaleWidget::setAlignment( QwtScaleDraw::Alignment alignment )
 {
-    if ( m_data->scaleDraw == nullptr )
+    if ( m_data->scaleDraw == NULL )
         return;
 
     m_data->scaleDraw->setAlignment( alignment );

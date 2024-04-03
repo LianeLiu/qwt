@@ -1107,7 +1107,7 @@ int QwtPlotCurve::closestPoint( const QPointF& pos, double* dist ) const
 int QwtPlotCurve::adjacentPoint( Qt::Orientation orientation, qreal value ) const
 {
     const QwtSeriesData< QPointF >* data = this->data();
-    if ( data == nullptr )
+    if ( data == NULL )
         return -1;
 
     if ( orientation == Qt::Horizontal )

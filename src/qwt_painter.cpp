@@ -1439,7 +1439,7 @@ qreal QwtPainter::horizontalAdvance(
  */
 QFont QwtPainter::scaledFont( const QFont& font, const QPaintDevice* paintDevice )
 {
-    if ( paintDevice == nullptr )
+    if ( paintDevice == NULL )
     {
 #if QT_VERSION < 0x060000
         paintDevice = QApplication::desktop();
@@ -1448,7 +1448,7 @@ QFont QwtPainter::scaledFont( const QFont& font, const QPaintDevice* paintDevice
         {
             virtual QPaintEngine* paintEngine() const QWT_OVERRIDE
             {
-                return nullptr;
+                return NULL;
             }
 
             virtual int metric( PaintDeviceMetric metric ) const QWT_OVERRIDE
