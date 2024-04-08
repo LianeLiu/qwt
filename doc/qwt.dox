@@ -36,9 +36,8 @@ to control or display values, arrays, or ranges of type double.
 
   \section platforms Platforms
 
-  Qwt 6.2 might be usable in all environments where you find
-  <a href="https://www.qt.io">Qt</a>.
-  It is compatible with Qt 4.8 and all Qt 5/6 versions.
+  Qwt 6.4 might be usable in all environments where you find
+  <a href="https://www.qt.io">Qt</a>.  It is compatible with Qt >= Qt 5.6
 
   \section changelogonmainpage What's new
   Read the \ref qwtchangelog "summary" of the most important changes.
@@ -54,10 +53,6 @@ to control or display values, arrays, or ranges of type double.
   \section downloads Downloads
   Stable releases or prereleases are available at the Qwt <a href="http://sourceforge.net/projects/qwt/files">project page</a>, or from the <a href="https://sourceforge.net/p/qwt/git">git repository</a>.
 
-  Active development will happen in the develop branch supporting Qt >= 5.6 and relying
-  on at least C++11. However all versions >= Qt 4.8 will actively be supported in the
-  6.x branches.\n The popular multiaxes branch is derived from develop.
- 
   \section installonmainpage Installation
 
   Qwt doesn't distribute binary packages, but today all major Linux distributors
