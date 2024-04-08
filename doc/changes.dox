@@ -8,8 +8,6 @@
 QwtPainter::polylineSplitting has been reenabled. Unfortunately the Qt raster paint
 engine still has serious performance issues with rendering long polylines.
 
- */
-
 \section CURVE QwtPlotCurve
 
 	- QwtPlotCurve::adjacentPoint
@@ -31,5 +29,6 @@ engine still has serious performance issues with rendering long polylines.
 \section ADJUSTMENTS Bugfixes/Adjustments
 
     Bugfixes/Adjustments - often needed because of new Qt developments
+ */
 
    
