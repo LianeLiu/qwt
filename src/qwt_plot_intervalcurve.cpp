@@ -174,7 +174,9 @@ namespace
         , m_pending( false )
         , m_value( 0 )
     {
-        const QRectF r = m_vertical ? rect : rect.transposed();
+        QRectF r = rect; 
+        if ( !m_vertical )
+            r.setSize( QSizeF( r.height(), r.width() ) );
 
         m_intvMin = qFloor( r.top() );
         m_intvMax = qCeil( r.bottom() );

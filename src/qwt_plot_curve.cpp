@@ -22,6 +22,7 @@
 
 #include <qpainter.h>
 #include <qpainterpath.h>
+#include <qnumeric.h>
 
 #include <climits>
 
