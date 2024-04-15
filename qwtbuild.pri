@@ -40,7 +40,6 @@ sanitize {
 # Include the generated moc files in the corresponding cpp file
 # what increases the compile time significantly
 
-DEFINES += QWT_MOC_INCLUDE=1
 # DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000
 
 ######################################################################

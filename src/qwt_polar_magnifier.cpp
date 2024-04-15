@@ -167,6 +167,4 @@ void QwtPolarMagnifier::unzoom()
     plt->replot();
 }
 
-#if QWT_MOC_INCLUDE
 #include "moc_qwt_polar_magnifier.cpp"
-#endif
