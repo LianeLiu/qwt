@@ -56,7 +56,7 @@ QwtPlotOpenGLCanvas::QwtPlotOpenGLCanvas( QwtPlot* plot )
 /*!
    \brief Constructor
 
-   \param int Number of samples, see QSurfaceFormat::samples()
+   \param numSamples Number of samples, see QSurfaceFormat::samples()
    \param plot Parent plot widget
    \sa QwtPlot::setCanvas()
  */
