@@ -8,7 +8,7 @@
   Stable Qwt releases are available from the 
   Qwt <a href="https://sourceforge.net/projects/qwt/files/qwt">project page</a>.
 
-  Qwt-$(QWTVERSION) consists of 4 files:
+  Qwt-$(QWTVERSION) consists of 3 files:
 
   - qwt-$(QWTVERSION).zip\n
     Zip file with the Qwt sources and the html documentation for Windows
@@ -17,19 +17,10 @@
     Compressed tar file with the Qwt sources and the html documentation
     for UNIX systems ( Linux, Mac, ... )
 
-  - qwt-$(QWTVERSION).pdf\n
-    Qwt documentation as PDF document. 
-
   - qwt-$(QWTVERSION).qch\n
     Qwt documentation as Qt Compressed Help document, that can be loaded into
     the Qt Assistant or Creator. In the Qt Creator context sensitive help will be
     available like for Qt classes.
-
-  Precompiled Qwt Designer plugins, that are compatible with some binary packages
-  of the Qt Creator:
-
-  - qwtdesigner-$(QWTVERSION)-*.zip
-
 
 \section INSTALL Installing Qwt
 
