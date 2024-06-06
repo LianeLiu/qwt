@@ -23,11 +23,14 @@
 #include <qpainterpath.h>
 #include <qtransform.h>
 #include <qprinter.h>
-#include <qfiledialog.h>
 #include <qfileinfo.h>
 #include <qimagewriter.h>
 #include <qvariant.h>
 #include <qmargins.h>
+
+#ifndef QT_NO_FILEDIALOG
+#include <qfiledialog.h>
+#endif
 
 #ifndef QWT_NO_SVG
 #ifdef QT_SVG_LIB
@@ -257,11 +260,13 @@ QwtPlotRenderer::LayoutFlags QwtPlotRenderer::layoutFlags() const
    \param fileName Path of the file, where the document will be stored
    \param sizeMM Size for the document in millimeters.
    \param resolution Resolution in dots per Inch (dpi)
+
+   \return wether document was rendered successfully.
  */
-void QwtPlotRenderer::renderDocument( QwtPlot* plot,
+bool QwtPlotRenderer::renderDocument( QwtPlot* plot,
     const QString& fileName, const QSizeF& sizeMM, int resolution )
 {
-    renderDocument( plot, fileName,
+    return renderDocument( plot, fileName,
         QFileInfo( fileName ).suffix(), sizeMM, resolution );
 }
 
@@ -288,14 +293,15 @@ void QwtPlotRenderer::renderDocument( QwtPlot* plot,
    \param sizeMM Size for the document in millimeters.
    \param resolution Resolution in dots per Inch (dpi)
 
+   \return wether document was rendered successfully.
    \sa renderTo(), render(), QwtPainter::setRoundingAlignment()
  */
-void QwtPlotRenderer::renderDocument( QwtPlot* plot,
+bool QwtPlotRenderer::renderDocument( QwtPlot* plot,
     const QString& fileName, const QString& format,
     const QSizeF& sizeMM, int resolution )
 {
     if ( plot == NULL || sizeMM.isEmpty() || resolution <= 0 )
-        return;
+        return false;
 
     QString title = plot->title().text();
     if ( title.isEmpty() )
@@ -333,6 +339,8 @@ void QwtPlotRenderer::renderDocument( QwtPlot* plot,
         QPainter painter( &printer );
         render( plot, &painter, documentRect );
 #endif
+
+        return true;
 #endif
     }
     else if ( fmt == QLatin1String( "ps" ) )
@@ -349,6 +357,8 @@ void QwtPlotRenderer::renderDocument( QwtPlot* plot,
 
         QPainter painter( &printer );
         render( plot, &painter, documentRect );
+
+        return true;
 #endif
     }
     else if ( fmt == QLatin1String( "svg" ) )
@@ -362,6 +372,8 @@ void QwtPlotRenderer::renderDocument( QwtPlot* plot,
 
         QPainter painter( &generator );
         render( plot, &painter, documentRect );
+
+        return true;
 #endif
     }
     else
@@ -381,9 +393,11 @@ void QwtPlotRenderer::renderDocument( QwtPlot* plot,
             render( plot, &painter, imageRect );
             painter.end();
 
-            image.save( fileName, format.toLatin1() );
+            return image.save( fileName, format.toLatin1() );
         }
     }
+
+    return false;
 }
 
 /*!
@@ -1105,9 +1119,7 @@ bool QwtPlotRenderer::exportTo( QwtPlot* plot, const QString& documentName,
     if ( fileName.isEmpty() )
         return false;
 
-    renderDocument( plot, fileName, sizeMM, resolution );
-
-    return true;
+    return renderDocument( plot, fileName, sizeMM, resolution );
 }
 
 #include "moc_qwt_plot_renderer.cpp"
