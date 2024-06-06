@@ -32,6 +32,10 @@
 #include <qfiledialog.h>
 #endif
 
+#ifndef QT_NO_MESSAGEBOX
+#include <qmessagebox.h>
+#endif
+
 #ifndef QWT_NO_SVG
 #ifdef QT_SVG_LIB
 #define QWT_FORMAT_SVG 1
@@ -1119,7 +1123,21 @@ bool QwtPlotRenderer::exportTo( QwtPlot* plot, const QString& documentName,
     if ( fileName.isEmpty() )
         return false;
 
-    return renderDocument( plot, fileName, sizeMM, resolution );
+    const bool ok = renderDocument( plot, fileName, sizeMM, resolution );
+
+#ifndef QT_NO_MESSAGEBOX
+    if ( !ok )
+    {
+        QString text = "Failed to export to ";
+        text += fileName;
+        text += ". The problem may be an unsupported file extension.";
+
+        QMessageBox::warning( NULL, "Export Failure",
+            text, QMessageBox::Ok, QMessageBox::NoButton );
+    }
+#endif
+
+    return ok;
 }
 
 #include "moc_qwt_plot_renderer.cpp"
