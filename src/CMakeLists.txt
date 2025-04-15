@@ -287,7 +287,10 @@ endif()
 
 if (QWT_DLL)
   add_library(${PROJECT_NAME} SHARED ${qwt_SRCS} ${qwt_HDRS})
-  target_compile_definitions(${PROJECT_NAME} PUBLIC QT_DLL QWT_DLL QWT_MAKEDLL)
+  target_compile_definitions(${PROJECT_NAME}
+       PUBLIC QT_DLL QWT_DLL
+       PRIVATE QWT_MAKEDLL
+    )
 else()
   add_library(${PROJECT_NAME} STATIC ${qwt_SRCS} ${qwt_HDRS})
 endif()
