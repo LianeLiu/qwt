@@ -287,7 +287,7 @@ endif()
 
 if (QWT_DLL)
   add_library(${PROJECT_NAME} SHARED ${qwt_SRCS} ${qwt_HDRS})
-  target_compile_definitions(${PROJECT_NAME} PUBLIC QWT_DLL QWT_MAKEDLL)
+  target_compile_definitions(${PROJECT_NAME} PUBLIC QT_DLL QWT_DLL QWT_MAKEDLL)
 else()
   add_library(${PROJECT_NAME} STATIC ${qwt_SRCS} ${qwt_HDRS})
 endif()
@@ -295,15 +295,16 @@ endif()
 target_link_libraries(${PROJECT_NAME} PUBLIC
   Qt6::Core
   Qt6::Gui
-  Qt6::Svg
   Qt6::Xml
   Qt6::Widgets
   Qt6::PrintSupport
   Qt6::Concurrent
 )
 
+if (QWT_SVG)
+  target_link_libraries(${PROJECT_NAME} PUBLIC Qt6::Svg)
+endif()
+
 if (QWT_OPENGL)
   target_link_libraries(${PROJECT_NAME} PUBLIC Qt6::OpenGLWidgets)
-else()
-  target_compile_definitions(${PROJECT_NAME} PUBLIC QWT_NO_OPENGL)
 endif()

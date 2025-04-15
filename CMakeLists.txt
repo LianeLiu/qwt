@@ -20,8 +20,16 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${QWT_LIB_PATH})
 
 find_package(Qt6 COMPONENTS  Core Gui Svg Xml Widgets PrintSupport Concurrent REQUIRED)
 
+if (QWT_SVG)
+    find_package(Qt6 COMPONENTS Svg REQUIRED)
+else()
+    add_compile_definitions(QWT_NO_SVG)
+endif()
+
 if (QWT_OPENGL)
     find_package(Qt6 COMPONENTS OpenGLWidgets REQUIRED)
+else()
+    add_compile_definitions(QWT_NO_OPENGL)
 endif()
 
 add_subdirectory(src)

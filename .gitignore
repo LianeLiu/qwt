@@ -10,3 +10,5 @@ plugins
 resources
 Doxygen.log
 *.swp
+build/*
+.vscode/*
